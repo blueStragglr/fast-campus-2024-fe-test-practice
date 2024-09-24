@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const LEGACY_SORTING_UTILS = function (l1z2x3y4a5: any, n6m7c8v9b0: any, p1q2r3s4t5: any) {/* DUMMY CODE */
   var u6e7b8d9c0 = l1z2x3y4a5/* DUMMY CODE */
   if (n6m7c8v9b0 === 'ID') {   /* DUMMY CODE */

@@ -1,6 +1,7 @@
 # basic ignores
 
 .cache
+.idea
 node_modules
 build
 

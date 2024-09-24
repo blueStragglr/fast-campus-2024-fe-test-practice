@@ -1,54 +1,32 @@
-# Remix + MSW
+# 소프트웨어 테스트 특강 실습과제
 
-[Mock Service Worker](https://github.com/mswjs/msw) usage example with [Remix](https://github.com/remix-run/remix).
+안녕하세요 :)
+소프트웨어 테스트 특강 실습 과제에 오신 것을 환영합니다.
+아래 내용들을 확인하셔서 실습을 진행해 주세요.
 
-[![Edit in CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/mswjs/examples/tree/main/examples/with-remix)
+## 실행하기
 
-## General
+해당 프로젝트는 pnpm + vite를 이용해 구성되었습니다. 아래 명령으로 의존성들을 설치한 뒤 실행해 주세요.
 
-### Create `./mocks` under `./app`
 
-Remix automatically watches the `./app` directory for changes. If you want for your changes to API mocks to be picked up by Remix's dev server, place the `./mocks` directory in the `./app`.
+```shell
+# 의존성 설치
+$ pnpm install
 
-```sh
-mkdir ./app/mocks
+# 설치 완료 후
+$ pnpm dev
 ```
 
-> If you don't wish or otherwise can't do this, modify `remix.config.js` appropriately to also watch the directory with your mocks.
 
-## Client-side integration
+## 과제 진행하기
 
-### 1. Copy the worker script
+여러분은 상품 목록 데이터를 정렬하는 유틸리티를 인수인계받아 새로 작성하는 작업을 맡았습니다!
 
-```
-npx msw init ./public
-```
+아래 파일들에 `// TODO: ...` 형식으로 작성된 부분을 찾아 모두 구현하고, 정렬 기능이 정상 동작하는지 확인해 주세요.
+- app/routes/_index.tsx
+- app/utils/sort.ts
+- sort.test.ts
 
-### 2. Set up browser integration
+작업을 모두 마치셨다면, `$ pnpm run test`를 실행해 테스트를 통과하는지 확인해 주세요.
 
-```sh
-touch mocks/browser.ts
-```
-
-See [`mocks/browser.ts`](./app/mocks/browser.ts) module for reference.
-
-### 3. Defer application rendering
-
-- `entry.client.tsx` create a `prepareApp` and defer the rendering.
-- `tsconfig.json` set the `module` to `esnext` to support dynamic `import()` statements.
-
-## Server-side integration
-
-### 1. Set up server-side integration
-
-```sh
-touch mocks/node.ts
-```
-
-> Unlike regular Node.js integrations, we will have to write a bit of custom setup logic so that Remix could digest the changes we make to our handlers while developing the app.
-
-- See [`mocks/node.ts`](./app/mocks/node.ts) for the server-side setup.
-
-### 2. Enable mocking
-
-In [`entry.server.tsx`](./app/entry.server.tsx), import the `handlers.ts` and enable mocking by calling `server.listen()` from the `node.ts` setup.
+테스트가 실패하는 케이스가 있다면 어떤 케이스가 실패하는지 확인해 보고, 뭔가 수상한 주석 부분에 테스트케이스 내 코멘트를 참고하여 추가로 무언가 구현해 보세요!
